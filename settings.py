@@ -11,6 +11,9 @@ from settings_local import *
 # system time zone.
 TIME_ZONE = 'Europe/Berlin'
 
+APPEND_SLASH = True
+FORCE_SCRIPT_NAME = ""
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
