@@ -35,6 +35,7 @@ var upload = function(file) {
 					result = $.parseJSON(xhr.responseText);	
 					if (result.success) {
 						$('#result').html('<input type="text" readonly value="'+app_url+'/'+result.name+'/" /><br /><input type="text" value="'+app_url+'/'+result.delete+'/delete/" readonly />');
+						$('input')[1].select();
 					} 
 					else {
 						$('#result').html(result.error);
@@ -88,7 +89,7 @@ var drop = function(event) {
 }
 
 $(document).ready(function(){
-	uploadPlace =  document.getElementById('sharezone');
+	uploadPlace =  document.getElementById('body');
 	uploadPlace.addEventListener("dragover", function(event) {
 		$('#sharezone').addClass('hover');
 		event.stopPropagation(); 
