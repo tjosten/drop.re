@@ -10,4 +10,4 @@ class File(models.Model):
 	download_cnt = models.BigIntegerField(null=True, blank=True)
 
 	def __unicode__(self):
-		return "%s - %s" % (self.pub_date, self.name)
+		return "%s - %s" % (self.pub_date, self.file.name)
