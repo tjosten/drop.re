@@ -78,7 +78,10 @@ var upload = function(file) {
 
 var loadProgress = function(event) {
 	var percentage = Math.round((event.loaded * 100) / event.total);
-	$('#result').html(Math.round(event.loaded/1024)+' KB / '+Math.round(event.total/1024)+' KB');
+	$('#result').html(Math.round(event.loaded/1024)+' KB / '+Math.round(event.total/1024)+' KB ('+percentage+'%)');
+	if (percentage == 100) {
+		$('#result').html('Upload complete. Saving..');
+	}
 }
 
 
