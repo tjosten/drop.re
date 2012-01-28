@@ -9,9 +9,14 @@ var getCookie = function(c) {
 }
 
 var upload = function(file) {
+	
+	if (typeof(file) == "undefined") {
+		$('#result').html('<p class="msg">This is not a file!</p>');
+		return;
+	}
 
 	if (file.size >= 1024*1024*10) {
-		$('#result').html('File is too big!');	
+		$('#result').html('<p class="msg">File is too big!</p>');	
 		return;
 	}
 	
