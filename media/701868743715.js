@@ -15,11 +15,13 @@ var upload = function(file) {
 		return;
 	}
 
-	if (file.size >= 1024*1024*10) {
+	if (file.size >= 1024*1024*100) {
 		$('#result').html('<p class="msg">File is too big!</p>');	
 		return;
 	}
 	
+	$('#result').html('Analyzing file...');
+
 	if(window.FileReader) { 
 		this.loadEnd = function() {
 			bin = reader.result;
