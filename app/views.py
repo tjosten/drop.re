@@ -75,6 +75,7 @@ def down_view(request, file):
 
 def delete_view(request, file):
 	f = get_object_or_404(File, Q(secret=file))
+	f.file.delete()
 	f.delete()
 	messages.add_message(request, messages.SUCCESS, 'File deleted!')
 	return HttpResponseRedirect(reverse("default"))
