@@ -1,0 +1,71 @@
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgb(230,230,230);
+	color: rgb(50,50,50);
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 72px;
+	margin: 0;
+}
+
+div#container {
+	width: 600px;
+	margin: 50px auto;
+	text-align:center;
+}
+
+div#sharezone {
+	border: 1px solid #fff;
+	width: 150px;
+	margin: 50px auto 0px;
+	height: 150px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;				
+	-webkit-border-radius: 20px;
+	-o-border-radius: 20px;	
+	background-color: #fff;
+	background-image: url(disk.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity: 0.5;
+}
+
+div#sharezone.hover {
+	opacity: 1;
+}
+
+div#result {
+	color: rgb(90,90,90);
+	margin: 10px auto;
+	font-size:14px;
+}
+
+div#result input {
+	border: 1px solid rgb(240,240,240);
+	-moz-border-radius: 5px;
+	border-radius: 5px;				
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;	
+	background-color: rgb(255,255,255);
+	width: 55%;
+	text-align:center;
+	color: rgb(90,90,90);
+	font-size:14px;
+	padding: 3px;
+}
+
+p.msg {
+	margin: auto;
+	width: 50%;
+	padding: 3px;
+	color: rgb(90,90,90);
+	font-size:14px;	
+	background-color: #fff;
+	border: 1px solid rgb(240,240,240);
+	-moz-border-radius: 5px;
+	border-radius: 5px;				
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;	
+}

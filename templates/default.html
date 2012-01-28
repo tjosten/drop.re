@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block javascript %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="/media/701868743715.js"></script>
+<script type="text/javascript">
+var app_url = '{{app_url}}';
+var cookie = '{{cookie}}';
+$(document).ready(function(){
+	$('input').live('click', function(e) {
+		this.focus();
+		this.select();
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="sharezone">{% csrf_token %}</div>
+<div id="result">Drop and go.</div>
+{% endblock %}
