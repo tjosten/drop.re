@@ -33,9 +33,7 @@ var upload = function(file) {
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState == 4) {
 					result = $.parseJSON(xhr.responseText);	
-					console.log(result);
 					if (result.success) {
-						console.log(app_url);
 						$('#result').html('<input type="text" readonly value="'+app_url+'/'+result.name+'/" /><br /><input type="text" value="'+app_url+'/'+result.delete+'/delete/" readonly />');
 					} 
 					else {
