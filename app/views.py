@@ -13,6 +13,8 @@ from django.core.files.base import ContentFile
 from django.utils import simplejson
 from random import random
 from settings import MAX_UPLOAD_SIZE, APP_URL
+from sendfile import sendfile
+from django.core.files.base import File as FF
 
 from drop.settings import *
 from drop.app.models import *
@@ -61,16 +63,31 @@ def up_view(request):
 
 	return HttpResponse(simplejson.dumps(response))
 
-def down_view(request, file):
-	f = get_object_or_404(File, Q(name=file))
+def down_view(request, ffile):
+	f = get_object_or_404(File, Q(name=ffile))
 	if not f.download_cnt:
 		f.download_cnt = 1
 	else:
 		f.download_cnt+=1
 	f.save()
-	response = HttpResponse(mimetype=f.type)
+
+	print FF
+	print file
+	print f.file.path
+
+	response = HttpResponse(FF(file(f.file.path, 'rb')), mimetype=f.type)
 	response['Content-Length'] = f.file.size
-	response.write(f.file.read())
+	response['Content-Disposition'] = 'filename=%s' % f.file.name[4:]
+
+	#response = HttpResponse(mimetype=f.type)
+	#response['Content-Length'] = f.file.size
+	#response.write(f.file.read())
+	#return response
+	#response = HttpResponse(mimetype=f.type)
+	#response['Content-disposition'] = 'filename=%s' % f.file.name
+	# making use of X-Sendfile header extension (must be supported by webserver!)
+	#response['X-Sendfile'] = f.file.path
+	#response['X-LIGHTTPD-send-file'] = f.file.path
 	return response
 
 def delete_view(request, file):
