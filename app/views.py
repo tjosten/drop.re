@@ -12,7 +12,7 @@ from urllib2 import urlopen
 from django.core.files.base import ContentFile
 from django.utils import simplejson
 from random import random
-from settings import MAX_UPLOAD_SIZE, APP_URL
+from settings import MAX_UPLOAD_SIZE, APP_URL, SECRET
 from sendfile import sendfile
 from django.core.files.base import File as FF
 
@@ -23,7 +23,7 @@ from decorators import cookie
 
 def no_view(request):
 	try:
-		if request.COOKIES['dorprevip'] == "966a84abc00812af53b1cb7d366e8c3d":
+		if request.COOKIES['dorprevip'] == SECRET:
 			return HttpResponseRedirect(reverse("default"))
 	except:
 		pass
@@ -71,23 +71,10 @@ def down_view(request, ffile):
 		f.download_cnt+=1
 	f.save()
 
-	print FF
-	print file
-	print f.file.path
-
 	response = HttpResponse(FF(file(f.file.path, 'rb')), mimetype=f.type)
 	response['Content-Length'] = f.file.size
 	response['Content-Disposition'] = 'filename=%s' % f.file.name[4:]
 
-	#response = HttpResponse(mimetype=f.type)
-	#response['Content-Length'] = f.file.size
-	#response.write(f.file.read())
-	#return response
-	#response = HttpResponse(mimetype=f.type)
-	#response['Content-disposition'] = 'filename=%s' % f.file.name
-	# making use of X-Sendfile header extension (must be supported by webserver!)
-	#response['X-Sendfile'] = f.file.path
-	#response['X-LIGHTTPD-send-file'] = f.file.path
 	return response
 
 def delete_view(request, file):
@@ -96,3 +83,16 @@ def delete_view(request, file):
 	f.delete()
 	messages.add_message(request, messages.SUCCESS, 'File deleted!')
 	return HttpResponseRedirect(reverse("default"))
+
+def invite_view(request, code):
+	try:
+		if request.COOKIES['dorprevip'] == SECRET:
+			return HttpResponseRedirect(reverse("default"))	
+	except:
+		pass
+	invitation = get_object_or_404(InviteCode, Q(code=code))
+	invitation.delete()
+	
+	response = render_to_response("invited.html", locals(), context_instance=RequestContext(request))		
+	response.set_cookie('dorprevip', SECRET, None, None, '/')
+	return response

@@ -11,5 +11,6 @@ urlpatterns = patterns('',
 	url(r'^up/$', 'app.views.up_view', name="up"),
 	url(r'^(?P<ffile>[0-9]{1,3}\.[0-9]+)/$', 'app.views.down_view', name="down"),
 	url(r'^(?P<file>[0-9]{1,3}\.[0-9]+)/delete/$', 'app.views.delete_view', name="delete"),
+	url(r'^(?P<code>[0-9]{1,3}\.[0-9]+)/invite/$', 'app.views.invite_view', name="invite"),
 	url(r'^admin/', include(admin.site.urls)),
 )
