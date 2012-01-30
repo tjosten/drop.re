@@ -31,6 +31,7 @@ def no_view(request):
 @cookie
 def default_view(request):
 	app_url = APP_URL
+	max_file_size = MAX_UPLOAD_SIZE
 	cookie = request.COOKIES['dorprevip']
 	return render_to_response("default.html", locals(), context_instance=RequestContext(request))
 

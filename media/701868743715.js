@@ -15,7 +15,7 @@ var upload = function(file) {
 		return;
 	}
 
-	if (file.size >= 1024*1024*100) {
+	if (file.size >= max_file_size) {
 		$('#result').html('<p class="msg">File is too big!</p>');	
 		return;
 	}
