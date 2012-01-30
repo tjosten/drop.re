@@ -12,7 +12,7 @@ from settings_local import *
 TIME_ZONE = 'Europe/Berlin'
 
 APPEND_SLASH = True
-#FORCE_SCRIPT_NAME = ""
+FORCE_SCRIPT_NAME = ""
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
