@@ -14,8 +14,6 @@ except:
 	print "usage: python drop.py <filename>"
 	sys.exit(0)
 
-filename = 'test.png'
-
 f = EnhancedFile(filename, 'r')
 host = "http://drop.re"
 url = "%s/up/" % host
