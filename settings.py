@@ -12,7 +12,7 @@ from settings_local import *
 TIME_ZONE = 'Europe/Berlin'
 
 APPEND_SLASH = True
-FORCE_SCRIPT_NAME = ""
+#FORCE_SCRIPT_NAME = ""
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -43,7 +43,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -63,6 +63,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'app'
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

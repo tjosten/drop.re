@@ -13,7 +13,6 @@ from django.core.files.base import ContentFile
 from django.utils import simplejson
 from random import random
 from settings import MAX_UPLOAD_SIZE, APP_URL, SECRET
-from sendfile import sendfile
 from django.core.files.base import File as FF
 
 from drop.settings import *
